@@ -35,6 +35,89 @@ body {
     align-items: center;
 }
 
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tab-switcher {
+    display: flex;
+    background: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 3px;
+    gap: 3px;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.8);
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.tab-btn.active {
+    background: white;
+    color: #667eea;
+    font-weight: 600;
+}
+
+.panel {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.panel.active {
+    display: flex;
+}
+
+.rag-input-area textarea {
+    min-height: 120px;
+}
+
+.rag-answer {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.rag-answer strong {
+    color: #667eea;
+    font-size: 1.2rem;
+}
+
+.rag-context {
+    margin-top: 8px;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 8px;
+}
+
+.rag-context-title {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.rag-context-body {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.rag-more {
+    color: #999;
+    font-style: italic;
+}
+
 .chat-header h1 {
     font-size: 1.3rem;
     font-weight: 600;
@@ -190,4 +273,101 @@ body {
 
 .chat-box::-webkit-scrollbar-thumb:hover {
     background: #a8a8a8;
+}
+
+/* ── 批量推理面板 ── */
+.batch-container {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.batch-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.batch-form label {
+    font-size: 0.9rem;
+    color: #555;
+    font-weight: 500;
+}
+
+.batch-form textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-family: 'Courier New', monospace;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.batch-form textarea:focus {
+    border-color: #667eea;
+}
+
+.batch-options {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.batch-options input[type="text"] {
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    width: 200px;
+}
+
+.batch-progress {
+    background: #f8f9ff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 14px;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.progress-bar-wrap {
+    background: #e0e0e0;
+    border-radius: 6px;
+    height: 8px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 6px;
+    transition: width 0.4s ease;
+}
+
+.batch-log {
+    max-height: 200px;
+    overflow-y: auto;
+    font-size: 0.82rem;
+    font-family: 'Courier New', monospace;
+    color: #444;
+    line-height: 1.6;
+}
+
+.log-row.error {
+    color: #e53935;
 }

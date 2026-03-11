@@ -10,20 +10,68 @@
     <div class="chat-container">
         <header class="chat-header">
             <h1>🤖 Qwen3-8B MaritimeBench 回答助手</h1>
-            <button id="clearBtn" class="clear-btn">🗑️ 清空对话</button>
+            <div class="header-right">
+                <div class="tab-switcher">
+                    <button class="tab-btn active" data-tab="chat">💬 聊天</button>
+                    <button class="tab-btn" data-tab="rag">🔍 RAG 答题</button>
+                    <button class="tab-btn" data-tab="batch">📦 批量推理</button>
+                </div>
+                <button id="clearBtn" class="clear-btn">🗑️ 清空</button>
+            </div>
         </header>
-        
-        <div id="chatBox" class="chat-box">
-            <div class="message assistant">
-                <div class="avatar">🤖</div>
-                <div class="bubble">你好！我是 Qwen3-8B MaritimeBench 回答助手，有什么可以帮你的吗？</div>
+
+        <!-- 聊天模式 -->
+        <div id="chatPanel" class="panel active">
+            <div id="chatBox" class="chat-box">
+                <div class="message assistant">
+                    <div class="avatar">🤖</div>
+                    <div class="bubble">你好！我是 Qwen3-8B MaritimeBench 回答助手，有什么可以帮你的吗？</div>
+                </div>
+            </div>
+            <div class="input-area">
+                <textarea id="userInput" placeholder="输入你的问题... (Enter 发送，Shift+Enter 换行)" rows="3"></textarea>
+                <button id="sendBtn" class="send-btn">发送</button>
             </div>
         </div>
-        
-        <div class="input-area">
-            <textarea id="userInput" placeholder="输入你的问题... (Shift+Enter 换行)" rows="3"></textarea>
-            <button id="sendBtn" class="send-btn">发送</button>
+
+        <!-- RAG 答题模式 -->
+        <div id="ragPanel" class="panel">
+            <div id="ragResultBox" class="chat-box">
+                <div class="message assistant">
+                    <div class="avatar">🔍</div>
+                    <div class="bubble">请在下方输入完整题目（包括选项），系统将通过 RAG 检索知识库后作答。</div>
+                </div>
+            </div>
+            <div class="input-area rag-input-area">
+                <textarea id="ragInput" placeholder="输入完整题目，例如：&#10;主船体各组成部分&#10;A. 船底、舷侧、甲板、首尾与舱壁&#10;B. 船底、舷侧、甲板&#10;C. 船底、甲板、舱壁&#10;D. 舷侧、甲板、首尾" rows="6"></textarea>
+                <button id="ragBtn" class="send-btn">提交</button>
+            </div>
         </div>
+    </div>
+
+        <!-- 批量推理模式 -->
+        <div id="batchPanel" class="panel">
+            <div class="batch-container">
+                <div class="batch-form">
+                    <label>输入 JSONL（每行一条题目 JSON）</label>
+                    <textarea id="batchInput" placeholder='{"index": 0, "input": "**User**: \n请回答单选题...\n 当前题目\n 题目\n选项：\nA. ...", "target": "A"}' rows="8"></textarea>
+                    <div class="batch-options">
+                        <label>输出文件名：<input id="batchOutput" type="text" value="predictions.jsonl" /></label>
+                    </div>
+                    <button id="batchStartBtn" class="send-btn">开始推理</button>
+                </div>
+                <div id="batchProgress" class="batch-progress" style="display:none">
+                    <div class="progress-header">
+                        <span id="progressText">0 / 0</span>
+                        <span id="progressAcc"></span>
+                    </div>
+                    <div class="progress-bar-wrap"><div id="progressBar" class="progress-bar" style="width:0%"></div></div>
+                    <div id="batchLog" class="batch-log"></div>
+                    <button id="batchDownloadBtn" class="send-btn" style="display:none;margin-top:10px">⬇️ 下载结果</button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script src="/static/script.js"></script>
