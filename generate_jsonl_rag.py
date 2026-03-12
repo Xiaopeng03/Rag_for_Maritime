@@ -140,7 +140,7 @@ def main():
     API_KEY = os.getenv("DASHSCOPE_API_KEY", "sk-8790af9e6e8b42ac9621dd9578741970")
     BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
     VECTORSTORE_PATH = "./RAG/vectorstore"
-    INPUT_FILE = "output.json"
+    INPUT_FILE = "calc_questions.json"
     OUTPUT_FILE = "predictions_rag.jsonl"
     SUMMARY_FILE = "evaluation_summary_rag.json"
 

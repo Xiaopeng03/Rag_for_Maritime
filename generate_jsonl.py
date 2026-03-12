@@ -154,7 +154,7 @@ def main():
     # 配置
     API_KEY = os.getenv("DASHSCOPE_API_KEY", "sk-8790af9e6e8b42ac9621dd9578741970")
     BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
-    INPUT_FILE = "output.json"
+    INPUT_FILE = "calc_questions.json"
     OUTPUT_FILE = "predictions.jsonl"
     SUMMARY_FILE = "evaluation_summary.json"
 
