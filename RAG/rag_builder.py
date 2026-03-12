@@ -2,12 +2,72 @@
 """
 RAG 知识库构建脚本
 用于将航运知识文档转换为向量数据库
+支持 PDF、TXT、JSON 格式
 """
 import os
+import json
 from langchain_community.document_loaders import PyPDFLoader, TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_core.documents import Document
+
+
+def load_json_documents(file_path):
+    """
+    加载 JSON 格式的知识文档
+
+    支持的格式：
+    1. 列表格式：[{"question": "...", "answer": "...", ...}, ...]
+    2. 字典格式：{"key1": "value1", "key2": "value2", ...}
+    """
+    documents = []
+
+    with open(file_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    if isinstance(data, list):
+        # 列表格式：每个元素作为一个文档
+        for i, item in enumerate(data):
+            if isinstance(item, dict):
+                # 将字典转换为文本
+                if 'question' in item and 'answer' in item:
+                    # 问答格式
+                    text = f"问题：{item['question']}\n答案：{item['answer']}"
+                    # 如果有选项，也加入
+                    if 'A' in item:
+                        text += f"\n选项A：{item.get('A', '')}"
+                        text += f"\n选项B：{item.get('B', '')}"
+                        text += f"\n选项C：{item.get('C', '')}"
+                        text += f"\n选项D：{item.get('D', '')}"
+                else:
+                    # 通用字典格式
+                    text = "\n".join([f"{k}：{v}" for k, v in item.items()])
+
+                doc = Document(
+                    page_content=text,
+                    metadata={"source": file_path, "index": i}
+                )
+                documents.append(doc)
+            elif isinstance(item, str):
+                # 纯文本列表
+                doc = Document(
+                    page_content=item,
+                    metadata={"source": file_path, "index": i}
+                )
+                documents.append(doc)
+
+    elif isinstance(data, dict):
+        # 字典格式：每个键值对作为一个文档
+        for i, (key, value) in enumerate(data.items()):
+            text = f"{key}：{value}"
+            doc = Document(
+                page_content=text,
+                metadata={"source": file_path, "key": key}
+            )
+            documents.append(doc)
+
+    return documents
 
 
 def build_knowledge_base(docs_folder, output_path):
@@ -39,6 +99,11 @@ def build_knowledge_base(docs_folder, output_path):
                 print(f"  - 加载 TXT: {file}")
                 loader = TextLoader(file_path, encoding='utf-8')
                 documents.extend(loader.load())
+            elif file.endswith('.json'):
+                print(f"  - 加载 JSON: {file}")
+                json_docs = load_json_documents(file_path)
+                documents.extend(json_docs)
+                print(f"    ✅ 加载了 {len(json_docs)} 条记录")
         except Exception as e:
             print(f"  ⚠️  加载失败 {file}: {e}")
 
