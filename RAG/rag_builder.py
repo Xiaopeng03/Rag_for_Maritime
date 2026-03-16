@@ -6,7 +6,7 @@ RAG 知识库构建脚本
 """
 import os
 import json
-from langchain_community.document_loaders import PyPDFLoader, TextLoader
+from langchain_community.document_loaders import PyPDFLoader, TextLoader, Docx2txtLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -98,6 +98,10 @@ def build_knowledge_base(docs_folder, output_path):
             elif file.endswith('.txt'):
                 print(f"  - 加载 TXT: {file}")
                 loader = TextLoader(file_path, encoding='utf-8')
+                documents.extend(loader.load())
+            elif file.endswith('.docx'):
+                print(f"  - 加载 DOCX: {file}")
+                loader = Docx2txtLoader(file_path)
                 documents.extend(loader.load())
             elif file.endswith('.json'):
                 print(f"  - 加载 JSON: {file}")
