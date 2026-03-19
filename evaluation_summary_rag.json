@@ -1,7 +1,7 @@
 {
   "model": "Qwen3-8B + RAG",
-  "total_questions": 1888,
-  "correct_answers": 1822,
-  "wrong_answers": 66,
-  "accuracy": "96.50%"
+  "total_questions": 101,
+  "correct_answers": 51,
+  "wrong_answers": 50,
+  "accuracy": "50.50%"
 }
