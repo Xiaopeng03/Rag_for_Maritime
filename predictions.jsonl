@@ -1,5 +1,5 @@
 {"index": 0, "question": "船舶电力系统供电网络中，放射形网络的特点是______。①发散形传输②环形传输③缺乏冗余④冗余性能好", "A": "②③", "B": "①③", "C": "②④", "D": "①④", "ground_truth": "B", "prediction": "B", "is_correct": true, "raw_response": "[B]"}
-{"index": 1, "question": "在单相桥式整流电路中，如果一只整流二极管被击穿，则______。", "A": "输出电压降低一半", "B": "输出电压降低至四分之一", "C": "输入交流电源短路", "D": "电路工作正常", "ground_truth": "C", "prediction": "A", "is_correct": false, "raw_response": "[A]"}
+{"index": 1, "question": "在单相桥式整流电路中，如果一只整流二极管被击穿，则______。", "A": "输出电压降低一半", "B": "输出电压降低至四分之一", "C": "输入交流电源短路", "D": "电路工作正常", "ground_truth": "C", "prediction": "C", "is_correct": true, "raw_response": "[C]"}
 {"index": 2, "question": "船舶保安审核的种类不包括______。", "A": "初次审核", "B": "年度审核", "C": "中间审核", "D": "换证审核", "ground_truth": "B", "prediction": "C", "is_correct": false, "raw_response": "[C]"}
 {"index": 3, "question": "湿蒸汽的状态由______决定。", "A": "温度与压强", "B": "压强与干度", "C": "过热度与压强", "D": "过冷度与温度", "ground_truth": "B", "prediction": "B", "is_correct": true, "raw_response": "[B]"}
 {"index": 4, "question": "船上液位探测器、空档测量和取样的任何设备等的金属构件要和______进行有效的电气连接，以保持电流的连续性，避免静电的产生而导致的火花放电。", "A": "海水", "B": "船体", "C": "码头", "D": null, "ground_truth": "B", "prediction": "B", "is_correct": true, "raw_response": "[B]"}
@@ -77,7 +77,7 @@
 {"index": 76, "question": "发电机并联运行控制及保护单元本身可以监视______；常与PLC结合在一起使用，实现故障工况下的非重要负荷分级卸载或发电机主开关延时跳闸。", "A": "短路故障、过电流、缺相、逆相序", "B": "短路故障、过电流、过载、逆功率", "C": "过电流、过载、缺相、逆功率", "D": "过载、逆功率、缺相、逆相序", "ground_truth": "B", "prediction": "C", "is_correct": false, "raw_response": "[C]"}
 {"index": 77, "question": "下列关于直流测速发电机和交流测速发电机的比较，错误的是______。", "A": "直流测速发电机因其输出信号不需要整流，故其在主机遥控系统中应用很多", "B": "直流测速发电机存在电刷等部件，测量信号的极性随着柴油机转向的改变而改变", "C": "交流测速发电机输出的是交变电压，需要经过整流才能达到判断柴油机转向的目的", "D": "为保证馈送到电子调速器的信号均为负反馈信号，直流测速发电机和交流测速发电机都需要整流", "ground_truth": "A", "prediction": "D", "is_correct": false, "raw_response": "[D]"}
 {"index": 78, "question": "装有有害物质的包装件应永久地标以正确的______。", "A": "商业名称", "B": "习惯名称", "C": "技术名称", "D": null, "ground_truth": "C", "prediction": "C", "is_correct": true, "raw_response": "[C]"}
-{"index": 79, "question": "某船装载后∆=15000t，GM=1.41m，重心偏离中纵剖面0.1m，则船舶初始横倾角θ₀，为______。", "A": "4.1°", "B": "4.6°", "C": "5.1°", "D": "5.6°", "ground_truth": "A", "prediction": "A", "is_correct": true, "raw_response": "[A]"}
+{"index": 79, "question": "某船装载后∆=15000t，GM=1.41m，重心偏离中纵剖面0.1m，则船舶初始横倾角θ₀，为______。", "A": "4.1°", "B": "4.6°", "C": "5.1°", "D": "5.6°", "ground_truth": "A", "prediction": "B", "is_correct": false, "raw_response": "[B]"}
 {"index": 80, "question": "DGU8800e数字调速单元中调节器和执行机构定位系统均分别由一个Intel8088微处理器控制，信号的输入输出通过计算机接口电路实现，以下属于定距桨主机调速器数据输入信号的是______。①转速信号 ②车令速度信号 ③扫气空气压力信号 ④螺距输入信号 ⑤停车信号 ⑥减速信号", "A": "①②③⑤⑥", "B": "①②③④⑤⑥", "C": "④⑤⑥", "D": "①②③", "ground_truth": "A", "prediction": "D", "is_correct": false, "raw_response": "[D]"}
 {"index": 81, "question": "BMP4规定，可为驾驶室______装配金属（钢/铝）板，一旦遭受海盗袭击可迅速关闭。①侧窗②后窗③侧翼门窗④前窗", "A": "①②③④", "B": "①②③", "C": "①③④", "D": null, "ground_truth": "B", "prediction": "B", "is_correct": true, "raw_response": "[B]"}
 {"index": 82, "question": "液压与气压传动中的执行元件是将流体的压力能转化为机械能的元件，其中做直线往复运动的元件是______。", "A": "液压马达", "B": "液压泵", "C": "液压缸", "D": "气动二位三通阀", "ground_truth": "C", "prediction": "C", "is_correct": true, "raw_response": "[C]"}
@@ -90,7 +90,7 @@
 {"index": 89, "question": "______是指传感器在稳态工作情况下输出量变化∆y对输入量变化∆x的比值。", "A": "线性度", "B": "灵敏度", "C": "分辨率", "D": "重复性", "ground_truth": "B", "prediction": "B", "is_correct": true, "raw_response": "[B]"}
 {"index": 90, "question": "下列关于密封整片和密封填料的区别，说法正确的是______。", "A": "静密封是靠密封整片来实现的", "B": "密封填料是实现静密封的主要手段之一", "C": "密封填料使用在静密封装置", "D": "密封垫片使用在动密封装置中", "ground_truth": "A", "prediction": "B", "is_correct": false, "raw_response": "[B]"}
 {"index": 91, "question": "同名包装危险货物的隔离要求通常比散装危险货物______。", "A": "视具体货物而定", "B": "高", "C": "相同", "D": "低", "ground_truth": "D", "prediction": "B", "is_correct": false, "raw_response": "[B]"}
-{"index": 92, "question": "先导式减压阀不起减压作用，最可能的原因是______。", "A": "导阀弹簧失效", "B": "油中有太多气体", "C": "阻尼孔堵塞", "D": "导阀打不开", "ground_truth": "D", "prediction": "C", "is_correct": false, "raw_response": "[C]"}
+{"index": 92, "question": "先导式减压阀不起减压作用，最可能的原因是______。", "A": "导阀弹簧失效", "B": "油中有太多气体", "C": "阻尼孔堵塞", "D": "导阀打不开", "ground_truth": "D", "prediction": "A", "is_correct": false, "raw_response": "[A]"}
 {"index": 93, "question": "日本沿岸右侧标的特征是______。", "A": "绿色灯光", "B": "标身是锥形", "C": "顶标是罐形", "D": null, "ground_truth": "B", "prediction": "B", "is_correct": true, "raw_response": "[B]"}
 {"index": 94, "question": "CB/T3436-2013推荐的液压油换油指标中，水分的极限指标是______。", "A": "0.1％", "B": "0.2％", "C": "0.25％", "D": "0.5％", "ground_truth": "B", "prediction": "C", "is_correct": false, "raw_response": "[C]"}
 {"index": 95, "question": "引起船体振动的主要振源是______。①螺旋桨②主机③波浪的冲击④抛锚等引起的干扰力", "A": "①②", "B": "②④", "C": "①③④", "D": "①②③④", "ground_truth": "A", "prediction": "C", "is_correct": false, "raw_response": "[C]"}
