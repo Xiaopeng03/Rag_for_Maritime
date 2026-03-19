@@ -73,43 +73,30 @@ def load_json_documents(file_path):
 
 
 def build_knowledge_base(docs_folder, output_path):
-    """构建航运知识向量库"""
+    """构建航运知识向量库（仅从清洗过的 JSON 数据加载）"""
     print(f"📚 开始构建知识库...")
-    print(f"📂 文档目录: {docs_folder}")
+    print(f"📂 数据目录: {docs_folder}")
 
     # 1. 加载文档
     documents = []
     if not os.path.exists(docs_folder):
-        print(f"❌ 文档目录不存在: {docs_folder}")
+        print(f"❌ 数据目录不存在: {docs_folder}")
         return None
 
-    files = os.listdir(docs_folder)
+    files = [f for f in os.listdir(docs_folder) if f.endswith('.json')]
     if not files:
-        print(f"⚠️  文档目录为空，请添加 PDF 或 TXT 文件")
+        print(f"⚠️  数据目录为空或无 JSON 文件，请添加清洗过的 JSON 文件")
         return None
 
-    print(f"📄 找到 {len(files)} 个文件")
+    print(f"📄 找到 {len(files)} 个 JSON 文件")
 
     for file in files:
         file_path = os.path.join(docs_folder, file)
         try:
-            if file.endswith('.pdf'):
-                print(f"  - 加载 PDF: {file}")
-                loader = PyPDFLoader(file_path)
-                documents.extend(loader.load())
-            elif file.endswith('.txt'):
-                print(f"  - 加载 TXT: {file}")
-                loader = TextLoader(file_path, encoding='utf-8')
-                documents.extend(loader.load())
-            elif file.endswith('.docx'):
-                print(f"  - 加载 DOCX: {file}")
-                loader = Docx2txtLoader(file_path)
-                documents.extend(loader.load())
-            elif file.endswith('.json'):
-                print(f"  - 加载 JSON: {file}")
-                json_docs = load_json_documents(file_path)
-                documents.extend(json_docs)
-                print(f"    ✅ 加载了 {len(json_docs)} 条记录")
+            print(f"  - 加载 JSON: {file}")
+            json_docs = load_json_documents(file_path)
+            documents.extend(json_docs)
+            print(f"    ✅ 加载了 {len(json_docs)} 条记录")
         except Exception as e:
             print(f"  ⚠️  加载失败 {file}: {e}")
 
@@ -152,7 +139,7 @@ def build_knowledge_base(docs_folder, output_path):
 
 if __name__ == '__main__':
     # 配置路径
-    docs_folder = '../knowledge_docs'
+    docs_folder = './cleaned_data'  # 存放清洗过的 JSON 数据的文件夹
     output_path = './vectorstore'
 
     # 构建知识库
