@@ -51,7 +51,7 @@ class RAGMaritimeQA:
             self.use_rag = False
 
         # 系统提示词
-        self.system_prompt = """你是航运领域专家。请根据提供的参考资料回答单选题。
+        self.system_prompt = """你是航运领域专家。请根据提供的参考资料回答单选题。如果参考资料中没有相关内容，请根据你自身的航运知识作答。
 
 要求：
 1. 只输出选项字母（A/B/C/D）
@@ -110,29 +110,37 @@ class RAGMaritimeQA:
         Returns:
             格式化后的 prompt
         """
+        few_shot_prefix = """以下是单选题，请只输出答案选项，将选项字母放在方括号中，例如 [A]。
+
+示例题目：船舶在港内航行时，应遵守的规定是？
+A. 可以高速行驶
+B. 应遵守港口规定，安全航行
+C. 无需遵守任何规定
+D. 只需遵守船长命令
+示例答案：[B]
+
+现在请回答以下题目：
+"""
+
         if context:
-            prompt = f"""参考资料：
+            prompt = few_shot_prefix + f"""参考资料：
 {context}
 
-请根据以上参考资料回答单选题：
-
 题目：{question}
-选项：
 A. {options.get('A', '')}
 B. {options.get('B', '')}
 C. {options.get('C', '')}
 D. {options.get('D', '')}
 
-答："""
+答案："""
         else:
-            prompt = f"""题目：{question}
-选项：
+            prompt = few_shot_prefix + f"""题目：{question}
 A. {options.get('A', '')}
 B. {options.get('B', '')}
 C. {options.get('C', '')}
 D. {options.get('D', '')}
 
-答："""
+答案："""
 
         return prompt
 

@@ -33,10 +33,20 @@ def load_json_documents(file_path):
         for i, item in enumerate(data):
             if isinstance(item, dict):
                 # 将字典转换为文本
-                if 'question' in item and 'answer' in item:
+                if '题目' in item and '答案' in item:
+                    # 新格式：题目、选项、答案
+                    options = item.get('选项', {})
+                    correct = item.get('答案', '')
+                    correct_text = options.get(correct, '')
+                    text = f"题目：{item['题目']}\n"
+                    for k, v in options.items():
+                        text += f"{k}. {v}\n"
+                    text += f"正确答案：{correct}. {correct_text}"
+                    if '类型' in item:
+                        text = f"类型：{item['类型']}\n" + text
+                elif 'question' in item and 'answer' in item:
                     # 问答格式
                     text = f"问题：{item['question']}\n答案：{item['answer']}"
-                    # 如果有选项，也加入
                     if 'A' in item:
                         text += f"\n选项A：{item.get('A', '')}"
                         text += f"\n选项B：{item.get('B', '')}"

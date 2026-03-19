@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(python -c \":*)",
+<<<<<<< HEAD
       "Bash(python -c \"import fitz; print\\(''ok''\\)\")"
+=======
+      "Bash(python3 -c \":*)"
+>>>>>>> 9ce67d24cdf1048eb5d482570cd4402134768a1a
     ]
   }
 }
