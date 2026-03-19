@@ -14,7 +14,7 @@ from qwen_8b_engine import Qwen8BEngine, parse_input_field, extract_answer, buil
 app = Flask(__name__)
 
 # 🔐 API 配置（建议打包时通过环境变量注入）
-API_KEY = os.getenv("DASHSCOPE_API_KEY", "sk-8790af9e6e8b42ac9621dd9578741970")
+API_KEY = os.getenv("DASHSCOPE_API_KEY", "sk-8d06a454088f42569c26079b97421737")
 BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 VECTORSTORE_PATH = "./RAG/vectorstore"
 
